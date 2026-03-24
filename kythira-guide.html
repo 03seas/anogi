@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kythira — A Visitor's Guide · Anogi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --stone: #E8E0D5;
+            --warm-white: #F5F0E8;
+            --dark-earth: #2C2416;
+            --terracotta: #A0522D;
+            --ochre: #C4933F;
+            --sage: #7A8C6E;
+            --plaster: #D4C9B8;
+            --shadow: rgba(44, 36, 22, 0.12);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--warm-white);
+            color: var(--dark-earth);
+            line-height: 1.7;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(245, 240, 232, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--plaster);
+            padding: 1.2rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--dark-earth);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-brand span {
+            color: var(--ochre);
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dark-earth);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover { opacity: 1; }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 10rem 3rem 6rem;
+            max-width: 820px;
+            margin: 0 auto;
+            text-align: center;
+            animation: fadeUp 1s ease both;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--ochre);
+            margin-bottom: 1.8rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--dark-earth);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--terracotta);
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--dark-earth);
+            opacity: 0.65;
+            max-width: 520px;
+            margin: 0 auto 3rem;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            opacity: 0.35;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            height: 1px;
+            width: 80px;
+            background: var(--terracotta);
+        }
+
+        .divider-mark {
+            color: var(--terracotta);
+            font-size: 0.7rem;
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 5rem 3rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--ochre);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--terracotta);
+        }
+
+        .section-intro {
+            font-size: 0.95rem;
+            font-weight: 300;
+            opacity: 0.7;
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        /* ── MAP ── */
+        .map-section {
+            background: var(--stone);
+            padding: 5rem 3rem;
+        }
+
+        .map-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .map-wrapper {
+            position: relative;
+            margin-top: 2rem;
+            border: 1px solid var(--plaster);
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px var(--shadow);
+        }
+
+        .map-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: 520px;
+            border: none;
+        }
+
+        .map-caption {
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            opacity: 0.5;
+            text-align: center;
+        }
+
+        /* ── CARDS ── */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .card {
+            background: var(--stone);
+            border: 1px solid var(--plaster);
+            padding: 2rem;
+            border-radius: 2px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px var(--shadow);
+        }
+
+        .card-icon {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            font-weight: 300;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        .card-tip {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--plaster);
+            font-size: 0.78rem;
+            color: var(--terracotta);
+            font-style: italic;
+        }
+
+        /* ── PRACTICAL ── */
+        .practical-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .practical-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--plaster);
+        }
+
+        .practical-item ul {
+            list-style: none;
+        }
+
+        .practical-item li {
+            font-size: 0.85rem;
+            font-weight: 300;
+            opacity: 0.75;
+            padding: 0.4rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .practical-item li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--ochre);
+            font-size: 0.7rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--dark-earth);
+            color: var(--warm-white);
+            text-align: center;
+            padding: 3rem;
+        }
+
+        footer .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        footer .footer-sub {
+            font-size: 0.75rem;
+            font-weight: 300;
+            opacity: 0.45;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        footer .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-size: 0.7rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--ochre);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        footer .back-link:hover { opacity: 1; }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeUp 0.8s ease both;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 640px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { gap: 1.2rem; }
+            .nav-links a { font-size: 0.65rem; letter-spacing: 1.5px; }
+            section { padding: 3.5rem 1.5rem; }
+            .map-section { padding: 3.5rem 1.5rem; }
+            .hero { padding: 8rem 1.5rem 4rem; }
+            .map-wrapper iframe { height: 360px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a class="nav-brand" href="index.html">To <span>Anogi</span></a>
+        <ul class="nav-links">
+            <li><a href="#beaches">Beaches</a></li>
+            <li><a href="#villages">Villages</a></li>
+            <li><a href="#dining">Dining</a></li>
+            <li><a href="#map">Map</a></li>
+            <li><a href="#practical">Plan</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <p class="hero-eyebrow">Kythira · Greece</p>
+        <h1>An island where <em>time</em><br>moves differently</h1>
+        <div class="divider"><span class="divider-mark">◈</span></div>
+        <p class="hero-sub">Hidden between three seas, Kythira rewards the unhurried traveller with wildflower valleys, empty coves, and villages unchanged for centuries.</p>
+    </div>
+
+    <!-- BEACHES -->
+    <section id="beaches" class="fade-in">
+        <p class="section-label">The Coast</p>
+        <h2 class="section-title">Beaches & <em>hidden coves</em></h2>
+        <p class="section-intro">From turquoise waterfall pools to wide sandy bays, Kythira's coastline remains one of the least crowded in the Aegean.</p>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">🌊</div>
+                <h3>Fonissa Waterfall</h3>
+                <p>A freshwater waterfall tumbling directly into a turquoise sea pool. One of Greece's most unusual swimming experiences.</p>
+                <p class="card-tip">Best visited in spring when the waterfall is at full flow.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🏖️</div>
+                <h3>Firi Ammos</h3>
+                <p>Remote red-sand beach accessible only on foot or by boat. The effort is entirely worth it.</p>
+                <p class="card-tip">Bring everything you need — no facilities.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚓</div>
+                <h3>Avlemonas</h3>
+                <p>A small fishing harbour with crystal water and a Venetian castle watching over the bay. Perfect for an evening swim and dinner.</p>
+                <p class="card-tip">The taverna at the water's edge serves whatever was caught that morning.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VILLAGES -->
+    <section id="villages" style="background: var(--stone); max-width: 100%; padding: 5rem 3rem;">
+        <div style="max-width: 960px; margin: 0 auto;">
+            <p class="section-label">The Villages</p>
+            <h2 class="section-title">Where <em>stone</em> holds memory</h2>
+            <p class="section-intro">Kythira's villages sit high above the sea, built inland to hide from centuries of pirates. Each one is a world unto itself.</p>
+            <div class="cards">
+                <div class="card" style="background: var(--warm-white);">
+                    <div class="card-icon">🏰</div>
+                    <h3>Chora</h3>
+                    <p>The island capital, crowned by a Venetian fortress with views across to the Peloponnese. Whitewashed lanes, a fine archaeological museum, and the best sunset on the island.</p>
+                </div>
+                <div class="card" style="background: var(--warm-white);">
+                    <div class="card-icon">🫒</div>
+                    <h3>Potamos</h3>
+                    <p>The island's largest village and commercial heart. The Sunday market draws locals from across Kythira — the place to find thyme honey, local cheese, and conversation.</p>
+                </div>
+                <div class="card" style="background: var(--warm-white);">
+                    <div class="card-icon">🕌</div>
+                    <h3>Mylopotamos</h3>
+                    <p>A village built around a watermill and waterfall, hidden in a lush green valley. The medieval ghost-village of Kato Hora lies just below, half-ruined and haunting.</p>
+                    <p class="card-tip">Walk down to the ruined castle — few tourists find it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DINING -->
+    <section id="dining">
+        <p class="section-label">The Table</p>
+        <h2 class="section-title">Eating & <em>drinking well</em></h2>
+        <p class="section-intro">Kythiran food is the food of a place that has never needed to impress outsiders. It is honest, seasonal, and quietly exceptional.</p>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">🧀</div>
+                <h3>Local Specialities</h3>
+                <p>Mizithra cheese unique to Kythira. Thyme honey from the mountain villages. Slow-cooked lamb. Fresh pasta made the way it has been made here for generations.</p>
+                <p class="card-tip">Ask for the local orektika — a spread of island appetisers.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🦑</div>
+                <h3>Waterfront Tavernas</h3>
+                <p>At Avlemonas and Diakofti, tables sit steps from the water. Order what arrived on the boat that morning — octopus, karavida, whatever the fisherman brought in.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🍯</div>
+                <h3>Take Something Home</h3>
+                <p>The thyme honey, preserved quince, and local wine from small producers in Potamos are worth seeking out. Nothing like it exists elsewhere.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <div class="map-section" id="map">
+        <div class="map-inner">
+            <p class="section-label">Navigate the Island</p>
+            <h2 class="section-title">Find your <em>way around</em></h2>
+            <p class="section-intro">Our curated map marks the beaches, villages, tavernas, and landmarks worth finding — including a few that don't appear in guidebooks.</p>
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/d/embed?mid=1RW3sXQ72OQELsjF-l0liSM5BAo0ZtIM&ehbc=2E312F"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+            <p class="map-caption">Tap any marker to explore · Zoom to discover hidden spots</p>
+        </div>
+    </div>
+
+    <!-- PRACTICAL -->
+    <section id="practical">
+        <p class="section-label">Plan Your Visit</p>
+        <h2 class="section-title">Everything you <em>need to know</em></h2>
+        <p class="section-intro">A few essentials before you arrive.</p>
+        <div class="practical-grid">
+            <div class="practical-item">
+                <h3>Getting Here</h3>
+                <ul>
+                    <li>Flights from Athens (40 min) to Kythira Airport (KIT)</li>
+                    <li>Ferry from Piraeus (7–8 hrs)</li>
+                    <li>Ferry from Neapoli, Peloponnese (1 hr)</li>
+                    <li>Book ferries early in July–August</li>
+                </ul>
+            </div>
+            <div class="practical-item">
+                <h3>Getting Around</h3>
+                <ul>
+                    <li>A rental car is essential</li>
+                    <li>Roads are good but narrow and winding</li>
+                    <li>Limited bus service between main villages</li>
+                    <li>Taxis available but scarce in remote areas</li>
+                </ul>
+            </div>
+            <div class="practical-item">
+                <h3>Best Time to Visit</h3>
+                <ul>
+                    <li>May–June: Wildflowers, mild weather, no crowds</li>
+                    <li>July–August: Peak season, warmest sea</li>
+                    <li>September–October: Calm seas, local festivals</li>
+                    <li>Winter: Quiet, authentic, many places closed</li>
+                </ul>
+            </div>
+            <div class="practical-item">
+                <h3>Good to Know</h3>
+                <ul>
+                    <li>ATMs in Chora, Potamos, and Livadi</li>
+                    <li>Many tavernas cash only</li>
+                    <li>Siesta: 2pm–5pm, shops close</li>
+                    <li>A few words of Greek go a long way</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-brand">To Anogi</div>
+        <div class="footer-sub">Logothetianika · Kythira · Greece</div>
+        <a class="back-link" href="index.html">← Back to the Cottage</a>
+    </footer>
+
+</body>
+</html>
