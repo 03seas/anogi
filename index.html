@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Anogi — Traditional Cottage in Kythira, Greece</title>
+    <title>Anogi — Traditional Cottage in Kythira, Greece</title>
     <meta name="description" content="Elegantly restored traditional cottage in the village of Logothetianika, Kythira. A timeless escape where stone, wood, and light converge.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,17 +71,22 @@
         }
 
         .nav-logo {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-weight: 400;
-            letter-spacing: 0.08em;
-            color: white;
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            transition: color 0.5s ease;
+            transition: all 0.5s ease;
         }
 
-        nav.scrolled .nav-logo {
-            color: var(--charcoal);
+        .nav-logo img {
+            height: 48px;
+            width: auto;
+            filter: invert(1) brightness(2);
+            transition: filter 0.5s ease, height 0.3s ease;
+        }
+
+        nav.scrolled .nav-logo img {
+            height: 42px;
+            filter: none;
         }
 
         .nav-links {
@@ -165,7 +170,7 @@
         .hero-image {
             position: absolute;
             inset: 0;
-            background-image: url('images/DSCF2092.jpg');
+            background-image: url('https://03seas.github.io/anogi/images/DSCF2092.jpg');
             background-size: cover;
             background-position: center 40%;
             transform: scale(1.05);
@@ -572,7 +577,7 @@
         .booking-bg {
             position: absolute;
             inset: 0;
-            background-image: url('images/DSCF2077.jpg');
+            background-image: url('https://03seas.github.io/anogi/images/DSCF2077.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -813,6 +818,14 @@
             nav { padding: 1.2rem 1.5rem; }
             nav.scrolled { padding: 0.8rem 1.5rem; }
 
+            .nav-logo img {
+                height: 38px;
+            }
+
+            nav.scrolled .nav-logo img {
+                height: 34px;
+            }
+
             .nav-links {
                 display: none;
                 position: fixed;
@@ -865,7 +878,7 @@
 
     <!-- NAVIGATION -->
     <nav id="mainNav">
-        <a href="#" class="nav-logo">To Anogi</a>
+        <a href="#" class="nav-logo"><img src="Anogi_Logo.png" alt="Anogi — Kythira, Greece"></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#cottage">The Cottage</a></li>
             <li><a href="#gallery">Gallery</a></li>
@@ -901,12 +914,12 @@
             <div class="intro-text reveal">
                 <p class="section-label">The Cottage</p>
                 <h2 class="section-title">A home shaped by <em>centuries</em></h2>
-                <p>Nestled in the quiet village of Logothetianika, To Anogi has been carefully restored to honour both its historical significance and the surrounding natural environment.</p>
+                <p>Nestled in the quiet village of Logothetianika, Anogi has been carefully restored to honour both its historical significance and the surrounding natural environment.</p>
                 <p>Original stone walls meet hand-finished plaster. Exposed timber beams crown every room. A traditional stone fireplace anchors the living space, while modern comforts — air conditioning, a fully equipped kitchen, an outdoor shower — ensure your stay is as effortless as it is atmospheric.</p>
                 <p>Every detail has been considered: from the hand-carved marble basin in the bathroom to the antique writing desk overlooking the bedroom, the cottage weaves together the island's past with a refined, contemporary sensibility.</p>
             </div>
             <div class="intro-image reveal">
-                <img src="images/DSCF1980.jpg" alt="Living room with stone fireplace, built-in sofas, and timber ceiling beams">
+                <img src="https://03seas.github.io/anogi/images/DSCF1980.jpg" alt="Living room with stone fireplace, built-in sofas, and timber ceiling beams">
             </div>
         </div>
     </section>
@@ -948,28 +961,28 @@
         </div>
         <div class="gallery-grid">
             <div class="gallery-item gi-1" onclick="openLightbox(0)">
-                <img src="images/DSCF1962.jpg" alt="Living room with fireplace and built-in sofas" loading="lazy">
+                <img src="https://03seas.github.io/anogi/images/DSCF1962.jpg" alt="Living room with fireplace and built-in sofas" loading="lazy">
             </div>
             <div class="gallery-item gi-2" onclick="openLightbox(1)">
-                <img src="images/DSCF1369.jpg" alt="Courtyard with pergola and garden" loading="lazy">
+                <img src="https://03seas.github.io/anogi/images/DSCF1369.jpg" alt="Courtyard with pergola and garden" loading="lazy">
             </div>
             <div class="gallery-item gi-3" onclick="openLightbox(2)">
-                <img src="images/DSCF2036.jpg" alt="Kitchen through stone archway" loading="lazy">
+                <img src="https://03seas.github.io/anogi/images/DSCF2036.jpg" alt="Kitchen through stone archway" loading="lazy">
             </div>
             <div class="gallery-item gi-4" onclick="openLightbox(3)">
-                <img src="images/DSCF1995.jpg" alt="Bedroom with stone wall" loading="lazy">
+                <img src="https://03seas.github.io/anogi/images/DSCF1995.jpg" alt="Bedroom with stone wall" loading="lazy">
             </div>
             <div class="gallery-item gi-5" onclick="openLightbox(4)">
-                <img src="images/DSCF1374.jpg" alt="Dining area with countryside views" loading="lazy">
+                <img src="https://03seas.github.io/anogi/images/DSCF1374.jpg" alt="Dining area with countryside views" loading="lazy">
             </div>
             <div class="gallery-item gi-6" onclick="openLightbox(5)">
-                <img src="images/DSCF2034.jpg" alt="Antique desk and bedroom" loading="lazy">
+                <img src="https://03seas.github.io/anogi/images/DSCF2034.jpg" alt="Antique desk and bedroom" loading="lazy">
             </div>
             <div class="gallery-item gi-7" onclick="openLightbox(6)">
-                <img src="images/DSCF1972.jpg" alt="Bathroom with marble basin" loading="lazy">
+                <img src="https://03seas.github.io/anogi/images/DSCF1972.jpg" alt="Bathroom with marble basin" loading="lazy">
             </div>
             <div class="gallery-item gi-8" onclick="openLightbox(7)">
-                <img src="images/DSCF1372.jpg" alt="Exterior view of cottage and village" loading="lazy">
+                <img src="https://03seas.github.io/anogi/images/DSCF1372.jpg" alt="Exterior view of cottage and village" loading="lazy">
             </div>
         </div>
     </section>
@@ -982,14 +995,14 @@
         </div>
         <div class="experience-grid">
             <div class="experience-card reveal">
-                <img src="images/DSCF2021.jpg" alt="Wine at sunset on the terrace">
+                <img src="https://03seas.github.io/anogi/images/DSCF2021.jpg" alt="Wine at sunset on the terrace">
                 <div class="experience-card-overlay">
                     <h3>Golden Hour</h3>
                     <p>Watch the sun set over the village rooftops from the upper terrace, a glass of local wine in hand — unhurried, unscripted, unforgettable.</p>
                 </div>
             </div>
             <div class="experience-card reveal">
-                <img src="images/DSCF2077.jpg" alt="Evening entrance with atmospheric lighting">
+                <img src="https://03seas.github.io/anogi/images/DSCF2077.jpg" alt="Evening entrance with atmospheric lighting">
                 <div class="experience-card-overlay">
                     <h3>After Dark</h3>
                     <p>As night falls, the courtyard transforms. Stone walls glow warm under soft lighting, and the only sounds are crickets and the distant sea.</p>
@@ -1051,7 +1064,7 @@
         <div class="booking-content reveal">
             <p class="section-label">Reserve Your Stay</p>
             <h2 class="section-title">Make it <em>yours</em></h2>
-            <p>To Anogi is available for short-term stays. Book directly through Airbnb or Booking.com, or get in touch for any questions.</p>
+            <p>Anogi is available for short-term stays. Book directly through Airbnb or Booking.com, or get in touch for any questions.</p>
             <div class="booking-buttons">
                 <a href="https://www.airbnb.com/rooms/1194824093197208847?guests=1&adults=1&s=67&unique_share_id=52926e48-c216-4fc2-a576-7e14880ea136" target="_blank" class="btn btn-primary">Book on Airbnb</a>
                 <a href="https://www.booking.com/hotel/gr/elegantly-restored-traditional-cottage.html" target="_blank" class="btn btn-outline">Book on Booking.com</a>
@@ -1063,7 +1076,7 @@
     <footer>
         <div class="footer-inner">
             <div>
-                <div class="footer-brand">To Anogi</div>
+                <div class="footer-brand">Anogi</div>
                 <div class="footer-contact">
                     <p>Logothetianika, Kythira, Greece</p>
                     <p><a href="tel:+306955488002">+30 6955 488 002</a></p>
@@ -1071,7 +1084,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 To Anogi. All rights reserved.</p>
+                <p>&copy; 2025 Anogi. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1116,14 +1129,14 @@
 
         // Lightbox
         const lightboxImages = [
-            'images/DSCF1962.jpg',
-            'images/DSCF1369.jpg',
-            'images/DSCF2036.jpg',
-            'images/DSCF1995.jpg',
-            'images/DSCF1374.jpg',
-            'images/DSCF2034.jpg',
-            'images/DSCF1972.jpg',
-            'images/DSCF1372.jpg'
+            'https://03seas.github.io/anogi/images/DSCF1962.jpg',
+            'https://03seas.github.io/anogi/images/DSCF1369.jpg',
+            'https://03seas.github.io/anogi/images/DSCF2036.jpg',
+            'https://03seas.github.io/anogi/images/DSCF1995.jpg',
+            'https://03seas.github.io/anogi/images/DSCF1374.jpg',
+            'https://03seas.github.io/anogi/images/DSCF2034.jpg',
+            'https://03seas.github.io/anogi/images/DSCF1972.jpg',
+            'https://03seas.github.io/anogi/images/DSCF1372.jpg'
         ];
 
         let currentLightbox = 0;
