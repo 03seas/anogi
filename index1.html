@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anogi — Traditional Cottage in Kythira, Greece</title>
+    <meta name="description" content="Elegantly restored traditional cottage in the village of Logothetianika, Kythira. A timeless escape where stone, wood, and light converge.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --stone: #c4a882;
+            --stone-light: #d4c4a8;
+            --plaster: #f5f0eb;
+            --cream: #faf7f3;
+            --warm-white: #fffcf8;
+            --timber: #8b6f47;
+            --timber-dark: #5a4530;
+            --olive: #6b7c5e;
+            --olive-dark: #3d4a3a;
+            --charcoal: #2c2a27;
+            --text: #3a3632;
+            --text-light: #7a7470;
+            --text-faint: #a89e96;
+            --terracotta: #c27a5a;
+            --dusk: #8b7e9a;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--warm-white);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ─── NAVIGATION ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 247, 243, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 3rem;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.5s ease;
+        }
+
+        .nav-logo img {
+            height: 48px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            transition: filter 0.5s ease, height 0.3s ease;
+        }
+
+        nav.scrolled .nav-logo img {
+            height: 42px;
+            filter: brightness(0) invert(0.15);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav.scrolled .nav-links a {
+            color: var(--text-light);
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        nav.scrolled .nav-links a:hover {
+            color: var(--charcoal);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile menu */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: white;
+            margin: 6px 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled .nav-toggle span {
+            background: var(--charcoal);
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://03seas.github.io/anogi/images/DSCF2092.jpg');
+            background-size: cover;
+            background-position: center 40%;
+            transform: scale(1.05);
+            animation: heroZoom 20s ease-out forwards;
+        }
+
+        @keyframes heroZoom {
+            to { transform: scale(1); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(30, 25, 20, 0.7) 0%,
+                rgba(30, 25, 20, 0.2) 40%,
+                rgba(30, 25, 20, 0.05) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 6vw 8vh;
+            max-width: 800px;
+            animation: fadeUp 1.2s ease 0.3s both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 500px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2.5rem;
+            right: 3rem;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            animation: fadeUp 1.2s ease 0.8s both;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            writing-mode: vertical-rl;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 50px;
+            background: rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            animation: scrollDown 2s ease infinite;
+        }
+
+        @keyframes scrollDown {
+            to { top: 100%; }
+        }
+
+        /* ─── SECTIONS ─── */
+        section {
+            padding: 8rem 6vw;
+        }
+
+        .section-label {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-faint);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+        }
+
+        /* ─── INTRO ─── */
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .intro-text p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .intro-image {
+            position: relative;
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .intro-image::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            left: -2rem;
+            right: 2rem;
+            bottom: -2rem;
+            border: 1px solid var(--stone-light);
+            z-index: -1;
+        }
+
+        /* ─── FEATURE STRIP ─── */
+        .feature-strip {
+            background: var(--plaster);
+            padding: 5rem 6vw;
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--stone);
+        }
+
+        .feature-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ─── GALLERY ─── */
+        .gallery-section {
+            background: var(--cream);
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 280px;
+            gap: 1rem;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0);
+            transition: background 0.4s ease;
+        }
+
+        .gallery-item:hover::after {
+            background: rgba(0,0,0,0.08);
+        }
+
+        .gi-1 { grid-column: span 7; grid-row: span 2; }
+        .gi-2 { grid-column: span 5; }
+        .gi-3 { grid-column: span 5; }
+        .gi-4 { grid-column: span 4; grid-row: span 2; }
+        .gi-5 { grid-column: span 4; }
+        .gi-6 { grid-column: span 4; }
+        .gi-7 { grid-column: span 4; }
+        .gi-8 { grid-column: span 4; }
+
+        /* ─── EXPERIENCE ─── */
+        .experience {
+            background: var(--warm-white);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .experience-card {
+            position: relative;
+            overflow: hidden;
+            height: 500px;
+        }
+
+        .experience-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .experience-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .experience-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30,25,20,0.65) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+        }
+
+        .experience-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            max-width: 400px;
+        }
+
+        /* ─── DETAILS SECTION ─── */
+        .details-section {
+            background: var(--charcoal);
+            color: white;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .details-grid .section-label {
+            color: var(--stone-light);
+        }
+
+        .details-column h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .details-column p,
+        .details-column li {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+        }
+
+        .details-column ul {
+            list-style: none;
+        }
+
+        .details-column li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .details-column li:last-child {
+            border-bottom: none;
+        }
+
+        /* ─── KYTHIRA SECTION ─── */
+        .kythira-section {
+            position: relative;
+            padding: 10rem 6vw;
+            background: var(--plaster);
+            text-align: center;
+        }
+
+        .kythira-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .kythira-content .section-title {
+            margin-bottom: 1.5rem;
+        }
+
+        .kythira-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ─── BOOKING CTA ─── */
+        .booking-section {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .booking-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://03seas.github.io/anogi/images/DSCF2077.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .booking-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(30, 25, 20, 0.6);
+        }
+
+        .booking-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 600px;
+            padding: 3rem;
+        }
+
+        .booking-content .section-label {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .booking-content .section-title {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-content p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .booking-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--charcoal);
+        }
+
+        .btn-primary:hover {
+            background: var(--stone-light);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.7);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--charcoal);
+            color: rgba(255,255,255,0.5);
+            padding: 4rem 6vw;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-contact p {
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+
+        .footer-contact a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ─── LIGHTBOX ─── */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(0,0,0,0.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close::before,
+        .lightbox-close::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 1px;
+            background: rgba(255,255,255,0.7);
+        }
+
+        .lightbox-close::before { transform: rotate(45deg); }
+        .lightbox-close::after { transform: rotate(-45deg); }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 1rem;
+            transition: color 0.3s;
+        }
+
+        .lightbox-nav:hover { color: white; }
+        .lightbox-prev { left: 1.5rem; }
+        .lightbox-next { right: 1.5rem; }
+
+        /* ─── SCROLL REVEAL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .intro {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .intro-image::after { display: none; }
+
+            .intro-image img { height: 400px; }
+
+            .gallery-grid {
+                grid-template-columns: repeat(6, 1fr);
+                grid-auto-rows: 220px;
+            }
+
+            .gi-1 { grid-column: span 6; grid-row: span 1; }
+            .gi-2 { grid-column: span 3; }
+            .gi-3 { grid-column: span 3; }
+            .gi-4 { grid-column: span 3; grid-row: span 1; }
+            .gi-5 { grid-column: span 3; }
+            .gi-6 { grid-column: span 3; }
+            .gi-7 { grid-column: span 3; }
+            .gi-8 { grid-column: span 6; }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-card { height: 400px; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1.2rem 1.5rem; }
+            nav.scrolled { padding: 0.8rem 1.5rem; }
+
+            .nav-logo img {
+                height: 38px;
+            }
+
+            nav.scrolled .nav-logo img {
+                height: 34px;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(250, 247, 243, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links.open a {
+                color: var(--charcoal) !important;
+                font-size: 1rem;
+            }
+
+            .nav-toggle { display: block; z-index: 110; }
+
+            section { padding: 5rem 1.5rem; }
+
+            .hero-content { padding: 0 1.5rem 6vh; }
+
+            .feature-strip { gap: 2.5rem; padding: 4rem 1.5rem; }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-auto-rows: 200px;
+            }
+
+            .gi-1, .gi-8 { grid-column: span 2; }
+            .gi-2, .gi-3, .gi-4, .gi-5, .gi-6, .gi-7 { grid-column: span 1; grid-row: span 1; }
+
+            .booking-section { min-height: 60vh; }
+
+            .footer-inner { flex-direction: column; }
+
+            .scroll-indicator { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="mainNav">
+        <a href="#" class="nav-logo"><img src="Anogi_Logo.png" alt="Anogi — Kythira, Greece"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#cottage">The Cottage</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#kythira">Kythira</a></li>
+            <li><a href="#booking">Book</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-image"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Logothetianika · Kythira · Greece</p>
+            <h1>Where stone <em>whispers</em> and time stands still</h1>
+            <p class="hero-description">An elegantly restored traditional cottage on an island where three seas meet — the Aegean, the Ionian, and the Sea of Crete.</p>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- INTRO -->
+    <section id="cottage">
+        <div class="intro">
+            <div class="intro-text reveal">
+                <p class="section-label">The Cottage</p>
+                <h2 class="section-title">A home shaped by <em>centuries</em></h2>
+                <p>Nestled in the quiet village of Logothetianika, Anogi has been carefully restored to honour both its historical significance and the surrounding natural environment.</p>
+                <p>Original stone walls meet hand-finished plaster. Exposed timber beams crown every room. A traditional stone fireplace anchors the living space, while modern comforts — air conditioning, a fully equipped kitchen, an outdoor shower — ensure your stay is as effortless as it is atmospheric.</p>
+                <p>Every detail has been considered: from the hand-carved marble basin in the bathroom to the antique writing desk overlooking the bedroom, the cottage weaves together the island's past with a refined, contemporary sensibility.</p>
+            </div>
+            <div class="intro-image reveal">
+                <img src="https://03seas.github.io/anogi/images/DSCF1980.jpg" alt="Living room with stone fireplace, built-in sofas, and timber ceiling beams">
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURE STRIP -->
+    <div class="feature-strip">
+        <div class="feature-item reveal">
+            <div class="feature-icon">◈</div>
+            <h4>2 Bedrooms</h4>
+            <p>Stone-walled rooms with exposed timber ceilings and handcrafted beds</p>
+        </div>
+        <div class="feature-item reveal">
+            <div class="feature-icon">◇</div>
+            <h4>Full Kitchen</h4>
+            <p>Equipped through a stone archway with oven, hob, and Nespresso machine</p>
+        </div>
+        <div class="feature-item reveal">
+            <div class="feature-icon">○</div>
+            <h4>Private Courtyard</h4>
+            <p>Stone pergola dining area surrounded by lavender and wild herbs</p>
+        </div>
+        <div class="feature-item reveal">
+            <div class="feature-icon">△</div>
+            <h4>Outdoor Shower</h4>
+            <p>Brass fixtures set against the original stone wall</p>
+        </div>
+        <div class="feature-item reveal">
+            <div class="feature-icon">▽</div>
+            <h4>Air Conditioned</h4>
+            <p>Modern climate control throughout for year-round comfort</p>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-header reveal">
+            <p class="section-label">Gallery</p>
+            <h2 class="section-title">Every corner tells <em>a story</em></h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item gi-1" onclick="openLightbox(0)">
+                <img src="https://03seas.github.io/anogi/images/DSCF1962.jpg" alt="Living room with fireplace and built-in sofas" loading="lazy">
+            </div>
+            <div class="gallery-item gi-2" onclick="openLightbox(1)">
+                <img src="https://03seas.github.io/anogi/images/DSCF1369.jpg" alt="Courtyard with pergola and garden" loading="lazy">
+            </div>
+            <div class="gallery-item gi-3" onclick="openLightbox(2)">
+                <img src="https://03seas.github.io/anogi/images/DSCF2036.jpg" alt="Kitchen through stone archway" loading="lazy">
+            </div>
+            <div class="gallery-item gi-4" onclick="openLightbox(3)">
+                <img src="https://03seas.github.io/anogi/images/DSCF1995.jpg" alt="Bedroom with stone wall" loading="lazy">
+            </div>
+            <div class="gallery-item gi-5" onclick="openLightbox(4)">
+                <img src="https://03seas.github.io/anogi/images/DSCF1374.jpg" alt="Dining area with countryside views" loading="lazy">
+            </div>
+            <div class="gallery-item gi-6" onclick="openLightbox(5)">
+                <img src="https://03seas.github.io/anogi/images/DSCF2034.jpg" alt="Antique desk and bedroom" loading="lazy">
+            </div>
+            <div class="gallery-item gi-7" onclick="openLightbox(6)">
+                <img src="https://03seas.github.io/anogi/images/DSCF1972.jpg" alt="Bathroom with marble basin" loading="lazy">
+            </div>
+            <div class="gallery-item gi-8" onclick="openLightbox(7)">
+                <img src="https://03seas.github.io/anogi/images/DSCF1372.jpg" alt="Exterior view of cottage and village" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="experience" id="experience">
+        <div class="gallery-header reveal">
+            <p class="section-label">The Experience</p>
+            <h2 class="section-title">Slow living, <em>elevated</em></h2>
+        </div>
+        <div class="experience-grid">
+            <div class="experience-card reveal">
+                <img src="https://03seas.github.io/anogi/images/DSCF2021.jpg" alt="Wine at sunset on the terrace">
+                <div class="experience-card-overlay">
+                    <h3>Golden Hour</h3>
+                    <p>Watch the sun set over the village rooftops from the upper terrace, a glass of local wine in hand — unhurried, unscripted, unforgettable.</p>
+                </div>
+            </div>
+            <div class="experience-card reveal">
+                <img src="https://03seas.github.io/anogi/images/DSCF2077.jpg" alt="Evening entrance with atmospheric lighting">
+                <div class="experience-card-overlay">
+                    <h3>After Dark</h3>
+                    <p>As night falls, the courtyard transforms. Stone walls glow warm under soft lighting, and the only sounds are crickets and the distant sea.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="details-section" id="details">
+        <p class="section-label" style="text-align: center;">Practical Details</p>
+        <div class="details-grid">
+            <div class="details-column reveal">
+                <h3>The Space</h3>
+                <ul>
+                    <li>Open-plan living &amp; kitchen</li>
+                    <li>2 bedrooms (double beds)</li>
+                    <li>1 bathroom with rain shower</li>
+                    <li>Private courtyard &amp; garden</li>
+                    <li>Outdoor dining pergola</li>
+                    <li>Outdoor brass shower</li>
+                    <li>Upper terrace</li>
+                </ul>
+            </div>
+            <div class="details-column reveal">
+                <h3>Amenities</h3>
+                <ul>
+                    <li>Air conditioning throughout</li>
+                    <li>Traditional fireplace</li>
+                    <li>Fully equipped kitchen</li>
+                    <li>Oven &amp; induction hob</li>
+                    <li>Nespresso coffee machine</li>
+                    <li>WiFi</li>
+                    <li>Linens &amp; towels provided</li>
+                </ul>
+            </div>
+            <div class="details-column reveal">
+                <h3>Getting Here</h3>
+                <p>Kythira has a small airport (KIT) with seasonal flights from Athens. The island is also reachable by ferry from Piraeus, Neapoli, and Crete.</p>
+                <p style="margin-top: 1rem;">A rental car is recommended to explore the island's hidden beaches, hilltop villages, and Byzantine churches.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KYTHIRA -->
+    <section class="kythira-section" id="kythira">
+        <div class="kythira-content reveal">
+            <p class="section-label">The Island</p>
+            <h2 class="section-title">Kythira — island of the <em>three seas</em></h2>
+            <p>Suspended between the Peloponnese and Crete, Kythira sits at the meeting point of three seas. Known in mythology as the birthplace of Aphrodite, the island remains one of Greece's best-kept secrets — unspoiled by mass tourism, rich with wildflowers, hidden coves, and centuries-old villages.</p>
+            <p>Wander through the Venetian fortress of Chora, swim at the turquoise waterfall of Fonissa, or simply lose yourself on an empty beach. Kythira rewards those who seek something slower, deeper, and more authentic.</p>
+        </div>
+    </section>
+
+    <!-- BOOKING CTA -->
+    <section class="booking-section" id="booking">
+        <div class="booking-bg"></div>
+        <div class="booking-bg-overlay"></div>
+        <div class="booking-content reveal">
+            <p class="section-label">Reserve Your Stay</p>
+            <h2 class="section-title">Make it <em>yours</em></h2>
+            <p>Anogi is available for short-term stays. Book directly through Airbnb or Booking.com, or get in touch for any questions.</p>
+            <div class="booking-buttons">
+                <a href="https://www.airbnb.com/rooms/1194824093197208847?guests=1&adults=1&s=67&unique_share_id=52926e48-c216-4fc2-a576-7e14880ea136" target="_blank" class="btn btn-primary">Book on Airbnb</a>
+                <a href="https://www.booking.com/hotel/gr/elegantly-restored-traditional-cottage.html" target="_blank" class="btn btn-outline">Book on Booking.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand">Anogi</div>
+                <div class="footer-contact">
+                    <p>Logothetianika, Kythira, Greece</p>
+                    <p><a href="tel:+306955488002">+30 6955 488 002</a></p>
+                    <p><a href="mailto:contact@3seas.info">contact@3seas.info</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Anogi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()"></button>
+        <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); changeLightbox(-1)">‹</button>
+        <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); changeLightbox(1)">›</button>
+        <img id="lightboxImg" src="" alt="">
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        reveals.forEach(el => observer.observe(el));
+
+        // Lightbox
+        const lightboxImages = [
+            'https://03seas.github.io/anogi/images/DSCF1962.jpg',
+            'https://03seas.github.io/anogi/images/DSCF1369.jpg',
+            'https://03seas.github.io/anogi/images/DSCF2036.jpg',
+            'https://03seas.github.io/anogi/images/DSCF1995.jpg',
+            'https://03seas.github.io/anogi/images/DSCF1374.jpg',
+            'https://03seas.github.io/anogi/images/DSCF2034.jpg',
+            'https://03seas.github.io/anogi/images/DSCF1972.jpg',
+            'https://03seas.github.io/anogi/images/DSCF1372.jpg'
+        ];
+
+        let currentLightbox = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        function openLightbox(index) {
+            currentLightbox = index;
+            lightboxImg.src = lightboxImages[index];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changeLightbox(dir) {
+            currentLightbox = (currentLightbox + dir + lightboxImages.length) % lightboxImages.length;
+            lightboxImg.src = lightboxImages[currentLightbox];
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeLightbox(-1);
+            if (e.key === 'ArrowRight') changeLightbox(1);
+        });
+    </script>
+
+</body>
+</html>
